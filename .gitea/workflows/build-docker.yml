@@ -29,16 +29,16 @@ jobs:
         username: ${{ env.REPOSITORY_OWNER }}
         password: ${{ env.PERSONAL_TOKEN }}
 
-    - name: Build and Push ollama
-      uses: docker/build-push-action@v5
-      with:
-        context: backend
-        push: true
-        tags: gitea.mfec.co.th/${{ env.REPOSITORY_OWNER }}/${{ env.REPOSITORY }}-ollama:latest
-
     - name: Build and Push open-webui
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
         tags: gitea.mfec.co.th/${{ env.REPOSITORY_OWNER }}/${{ env.REPOSITORY }}-open-webui:latest
+        
+    - name: Build and Push ollama
+      uses: docker/build-push-action@v5
+      with:
+        context: backend
+        push: true
+        tags: gitea.mfec.co.th/${{ env.REPOSITORY_OWNER }}/${{ env.REPOSITORY }}-ollama:latest
