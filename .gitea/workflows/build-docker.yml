@@ -15,6 +15,14 @@ jobs:
       PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }} 
 
     steps:
+    - name: Check Internet
+      run: |
+        echo "Checking GitHub connection..."
+        curl -I https://github.com
+
+    - name: DNS Test
+      run: |
+        nslookup github.com || echo "DNS lookup failed"
 
     - name: Checkout repository
       uses: actions/checkout@v4
