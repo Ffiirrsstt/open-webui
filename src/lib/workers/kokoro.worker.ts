@@ -1,5 +1,5 @@
 // import { env } from '@huggingface/transformers';
-import { KokoroTTS } from 'kokoro-js';
+// import { KokoroTTS } from 'kokoro-js';
 
 // TODO: Below doesn't work as expected, need to investigate further
 // env.backends.onnx.wasm.wasmPaths = '/wasm/';
@@ -18,12 +18,12 @@ self.onmessage = async (event) => {
 		self.postMessage({ status: 'init:start' });
 
 		try {
-			tts = await KokoroTTS.from_pretrained(model_id, {
-				dtype,
-				device: !!navigator?.gpu ? 'webgpu' : 'wasm' // Detect WebGPU
-			});
-			isInitialized = true; // Mark as initialized after successful loading
-			self.postMessage({ status: 'init:complete' });
+			// tts = await KokoroTTS.from_pretrained(model_id, {
+			// 	dtype,
+			// 	device: !!navigator?.gpu ? 'webgpu' : 'wasm' // Detect WebGPU
+			// });
+			// isInitialized = true; // Mark as initialized after successful loading
+			// self.postMessage({ status: 'init:complete' });
 		} catch (error) {
 			isInitialized = false; // Ensure it's marked as false on failure
 			self.postMessage({ status: 'init:error', error: error.message });
