@@ -35,10 +35,12 @@ jobs:
         context: .
         push: true
         tags: gitea.mfec.co.th/${{ env.REPOSITORY_OWNER }}/${{ env.REPOSITORY }}-open-webui:latest
-        
+
     - name: Build and Push ollama
       uses: docker/build-push-action@v5
       with:
-        context: backend
+        context: .
         push: true
         tags: gitea.mfec.co.th/${{ env.REPOSITORY_OWNER }}/${{ env.REPOSITORY }}-ollama:latest
+        build-args: |
+            USE_OLLAMA=true
